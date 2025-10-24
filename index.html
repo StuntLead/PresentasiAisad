@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi AISAD - Studi Kasus PT. XYZ</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f; 
+            color: #ccd6f6; 
+            scroll-behavior: smooth;
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, h4 {
+            color: #ffffff; 
+            font-weight: 700;
+        }
+        
+        .accent-color {
+            color: #ffca28; 
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid #1e2d4a;
+            width: 100%;
+            position: relative; 
+            z-index: 2; 
+            background-color: transparent; 
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1; 
+            background-color: #0a192f; 
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+            background-color: #1e2d4a;
+        }
+
+        .styled-table thead tr {
+            color: #0a192f;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            text-align: left;
+            word-break: break-word;
+        }
+
+        .styled-table thead th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: #ffca28;
+            color: #0a192f;
+            z-index: 1;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #13213c;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #13213c;
+        }
+        
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #ffca28;
+        }
+
+        .styled-table tbody tr:hover {
+            background-color: #2a3f5e;
+            cursor: default;
+        }
+        
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10; 
+        }
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccd6f6;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            background-color: #ffca28;
+            transform: scale(1.5);
+        }
+
+        .crc-card {
+            background-color: #1e2d4a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .crc-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffca28;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #2a3f5e;
+            padding-bottom: 0.5rem;
+        }
+        .crc-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .crc-card ul, .crc-card p {
+            font-size: 0.875rem;
+            color: #ccd6f6;
+            padding-left: 1rem;
+        }
+        .crc-card ul {
+            list-style-type: disc;
+        }
+        .crc-card ul li {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+        .crc-card p {
+            padding-left: 0;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="particles-js"></div>
+
+    <div class="nav-dots">
+        <a href="#intro" class="nav-dot active" data-section="intro"></a>
+        <a href="#final-table" class="nav-dot" data-section="final-table"></a>
+        <a href="#updated-diagram" class="nav-dot" data-section="updated-diagram"></a>
+        <a href="#first-cut-diagram" class="nav-dot" data-section="first-cut-diagram"></a>
+        <a href="#crc-1" class="nav-dot" data-section="crc-1"></a>
+        <a href="#crc-2" class="nav-dot" data-section="crc-2"></a>
+        <a href="#crc-3" class="nav-dot" data-section="crc-3"></a>
+        <a href="#ui-demo" class="nav-dot" data-section="ui-demo"></a>
+        <a href="#conclusion" class="nav-dot" data-section="conclusion"></a>
+    </div>
+
+    <section id="intro" class="slide text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-title">Advanced Information Systems Analysis <span class="accent-color">and Design (AISAD)</span></h1>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-3xl animate-subtitle">Studi Kasus PT. XYZ</p>
+        <p class="text-lg text-gray-400 mt-4 animate-subtitle">Kelompok 6 LA81</p>
+        <svg class="w-12 h-12 mt-16 text-gray-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </section>
+
+    <section id="final-table" class="slide">
+        <div class="text-center w-full max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 reveal">Final Table of Classes</h2>
+            <div class="overflow-auto reveal max-h-[80vh] rounded-lg" style="margin: 25px 0;">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Attributes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Customer</td><td>customerID, customerUsername, customerFullName, customerPhoneNumber, customerAddress, customerEmailAddress, customerPassword, registrationTime, registrationServiceArea, customerCreditLimit</td></tr>
+                        <tr><td>SalesOrder</td><td>orderID, customerID, orderTime, orderStatus, orderDestination, deliveryNotes, adminID</td></tr>
+                        <tr><td>OrderDetails</td><td>orderID, productID, quantity</td></tr>
+                        <tr><td>Product</td><td>productID, productName, productDescription, productPrice, productCategoryID, productImage</td></tr>
+                        <tr><td>ProductCategory</td><td>productCategoryID, categoryName, categoryDescription</td></tr>
+                        <tr><td>CreditLimitRequest</td><td>creditLimitRequestCode, customerID, customerMonthlySalary, creditIncreaseAmount, requestStatus, supervisorID</td></tr>
+                        <tr><td>SalesAdmin</td><td>adminID, adminName, adminPhoneNumber, adminEmailAddress, adminPassword, branchID</td></tr>
+                        <tr><td>Supervisor</td><td>supervisorID, supervisorName, supervisorEmailAddress, supervisorPassword, branchID</td></tr>
+                        <tr><td>Branch</td><td>branchID, branchName, branchAddress</td></tr>
+                        <tr><td>Warehouse</td><td>warehouseID, warehouseAddress</td></tr>
+                        <tr><td>WarehouseStaff</td><td>warehouseStaffID, staffName, staffEmailAddress, staffPassword, warehouseID</td></tr>
+                        <tr><td>Stock</td><td>warehouseID, productID, stockQuantity</td></tr>
+                        <tr><td>DeliveryOrder</td><td>orderID, deliveryDate, logisticsID, vehicleID, driverID, deliveryStatus</td></tr>
+                        <tr><td>Logistics</td><td>logisticsID, logisticsName, logisticsEmailAddress, logisticsPassword</td></tr>
+                        <tr><td>Vehicle</td><td>vehicleID, vehicleModel, vehicleLoadCapacityInKg, vehicleProductionYear, vehiclePlateNumber</td></tr>
+                        <tr><td>Driver</td><td>driverID, driverName, driverPhoneNumber, driverEmailAddress, driverPassword, driverLicenseNumber</td></tr>
+                        <tr><td>DeliveryValidation</td><td>orderID, validationStatus, securityID</td></tr>
+                        <tr><td>Security</td><td>securityID, securityName, securityEmailAddress, securityPassword, securityPostLocation</td></tr>
+                        <tr><td>DeliveryConfirmation</td><td>orderID, deliveryProof, deliveryConfirmedDate, deliveryConfirmationNotes, userConfirmationStatus, driverConfirmationStatus</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="updated-diagram" class="slide">
+        <div class="text-center w-full max-w-5xl">
+            <h2 class="text-4xl font-bold mb-8 reveal">Updated Class Diagram</h2>
+            <div class="bg-gray-100 p-8 rounded-lg shadow-2xl reveal w-full mx-auto">
+                 <img src="UpdatedClass.jpg" 
+                     alt="Placeholder Updated Class Diagram" 
+                     class="w-full h-auto rounded-md"
+                     onerror="this.onerror=null;this.src='https://placehold.co/1024x768/e2e8f0/334155?text=Image+Not+Found';">
+            </div>
+        </div>
+    </section>
+
+    <section id="first-cut-diagram" class="slide">
+        <div class="text-center w-full max-w-5xl">
+            <h2 class="text-4xl font-bold mb-8 reveal">First-Cut Design Model Class Diagram</h2>
+
+            <div class="bg-gray-100 p-8 rounded-lg shadow-2xl reveal w-full mx-auto">
+                 <img src="firstCut.jpg" 
+                     alt="Placeholder First-Cut Design Model Class Diagram" 
+                     class="w-full h-auto rounded-md"
+                     onerror="this.onerror=null;this.src='https://placehold.co/1024x768/e2e8f0/334155?text=Image+Not+Found';">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 5: CRC Cards (1-6) --><section id="crc-1" class="slide">
+        <div class="text-center w-full max-w-7xl">
+            <h2 class="text-4xl font-bold mb-8 reveal">CRC (Class-Responsibility-Collaborator) Cards <span class="accent-color">(1-6)</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                <!-- Card 1: Customer --><div class="crc-card reveal">
+                    <h3>1. Customer</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>registerAccount</li>
+                                <li>login</li>
+                                <li>placeOrder</li>
+                                <li>requestCreditLimitIncrease</li>
+                                <li>viewOrderHistory</li>
+                                <li>trackOrderDelivery</li>
+                                <li>createCreditLimitRequest</li>
+                                <li>getCreditLimitRequestHistory</li>
+                                <li>getCustomerData</li>
+                                <li>editCustomerData</li>
+                                <li>saveCustomerData</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>SalesOrder</li>
+                                <li>CreditLimitRequest</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>customerID, customerUsername, customerFullName, customerPhoneNumber, customerAddress, customerEmailAddress, customerPassword, registrationTime, registrationServiceArea, customerCreditLimit</p>
+                    </div>
+                </div>
+                <!-- Card 2: SalesAdmin --><div class="crc-card reveal">
+                    <h3>2. SalesAdmin</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>manageOrdersData</li>
+                                <li>manageCustomersData</li>
+                                <li>viewSalesPerformance</li>
+                                <li>getAdminData</li>
+                                <li>listSalesAdmins</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>SalesOrder</li>
+                                <li>Branch</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>adminID, adminName, adminPhoneNumber, adminEmailAddress, adminPassword</p>
+                    </div>
+                </div>
+                <!-- Card 3: Supervisor --><div class="crc-card reveal">
+                    <h3>3. Supervisor</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>approveCustomerRegistration</li>
+                                <li>updateCreditLimitRequestStatus</li>
+                                <li>getCreditLimitRequestHistory</li>
+                                <li>approveCreditLimitRequest</li>
+                                <li>monitorBranchPerformance</li>
+                                <li>viewCustomersData</li>
+                                <li>getSupervisorData</li>
+                                <li>listSupervisors</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>CreditLimitRequest</li>
+                                <li>Branch</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>supervisorID, supervisorName, supervisorEmailAddress, supervisorPassword</p>
+                    </div>
+                </div>
+                <!-- Card 4: Logistics --><div class="crc-card reveal">
+                    <h3>4. Logistics</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>scheduleDelivery</li>
+                                <li>manageVehicleLoad</li>
+                                <li>trackDelivery</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>DeliveryOrder</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>logisticsID, logisticsName, logisticsEmailAddress, logisticsPassword</p>
+                    </div>
+                </div>
+                <!-- Card 5: WarehouseStaff --><div class="crc-card reveal">
+                    <h3>5. WarehouseStaff</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>manageWarehouseStock</li>
+                                <li>generateStockReport</li>
+                                <li>getWarehouseData</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>Warehouse</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>warehouseStaffID, staffName, staffEmailAddress, staffPassword</p>
+                    </div>
+                </div>
+                <!-- Card 6: Driver --><div class="crc-card reveal">
+                    <h3>6. Driver</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>assignDriver</li>
+                                <li>viewDeliverySchedule</li>
+                                <li>confirmDelivery</li>
+                                <li>uploadDeliveryProof</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>DeliveryOrder</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>driverID, driverName, driverPhoneNumber, driverAddress, driverLicenseNumber</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: CRC Cards (7-12) --><section id="crc-2" class="slide">
+        <div class="text-center w-full max-w-7xl">
+            <h2 class="text-4xl font-bold mb-8 reveal">CRC (Class-Responsibility-Collaborator) Cards <span class="accent-color">(7-12)</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                <!-- Card 7: Security --><div class="crc-card reveal">
+                    <h3>7. Security</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>validateVehicleWithDeliveryOrder</li>
+                                <li>confirmVehicleDeparture</li>
+                                <li>confirmVehicleArrival</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>Delivery Validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>securityID, securityName, securityEmailAddress, securityPassword, securityPostLocation</p>
+                    </div>
+                </div>
+                <!-- Card 8: Branch --><div class="crc-card reveal">
+                    <h3>8. Branch</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>listSalesAdmins</li>
+                                <li>listSupervisors</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>SalesAdmin</li>
+                                <li>Supervisor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>branchID, branchName, branchAddress</p>
+                    </div>
+                </div>
+                <!-- Card 9: Vehicle --><div class="crc-card reveal">
+                    <h3>9. Vehicle</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>assignDeliveryOrder</li>
+                                <li>checkAvailability</li>
+                                <li>confirmVehicleDeparture</li>
+                                <li>confirmVehicleArrival</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>DeliveryOrder</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>vehicleID, vehicleModel, vehicleLoadCapacityKg, vehicleProductionYear, vehiclePlateNumber</p>
+                    </div>
+                </div>
+                <!-- Card 10: Sales Order --><div class="crc-card reveal">
+                    <h3>10. Sales Order</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>createOrder</li>
+                                <li>updateOrderStatus</li>
+                                <li>viewOrderHistory</li>
+                                <li>manageOrders</li>
+                                <li>calculateOrderTotal</li>
+                                <li>cancelOrder</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>Customer</li>
+                                <li>SalesAdmin</li>
+                                <li>Product</li>
+                                <li>DeliveryOrder</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>orderID, orderTime, orderStatus, orderDestination, orderNotes</p>
+                    </div>
+                </div>
+                <!-- Card 11: DeliveryOrder --><div class="crc-card reveal">
+                    <h3>11. DeliveryOrder</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>assignVehicle</li>
+                                <li>assignDriver</li>
+                                <li>updateDeliveryStatus</li>
+                                <li>scheduleDelivery</li>
+                                <li>trackDelivery</li>
+                                <li>getDeliveryOrderData</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>SalesOrder</li>
+                                <li>Logistics</li>
+                                <li>Vehicle</li>
+                                <li>Driver</li>
+                                <li>DeliveryConfirmation</li>
+                                <li>Delivery Validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>orderID, deliveryDate, deliveryStatus</p>
+                    </div>
+                </div>
+                <!-- Card 12: Delivery Validation --><div class="crc-card reveal">
+                    <h3>12. Delivery Validation</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>validateVehicleWithDeliveryOrder</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>DeliveryOrder</li>
+                                <li>Security</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>orderID, validationStatus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 7: CRC Cards (13-18) --><section id="crc-3" class="slide">
+        <div class="text-center w-full max-w-7xl">
+            <h2 class="text-4xl font-bold mb-8 reveal">CRC (Class-Responsibility-Collaborator) Cards <span class="accent-color">(13-18)</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                <!-- Card 13: DeliveryConfirmation --><div class="crc-card reveal">
+                    <h3>13. DeliveryConfirmation</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>confirmDelivery</li>
+                                <li>uploadDeliveryProof</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>DeliveryOrder</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>orderID, proof, deliveryConfirmationDate, deliveryConfirmationNotes, driverConfirmationStatus</p>
+                    </div>
+                </div>
+                <!-- Card 14: Stock --><div class="crc-card reveal">
+                    <h3>14. Stock</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>manageStock</li>
+                                <li>updateStock</li>
+                                <li>getStockAvailability</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>Warehouse</li>
+                                <li>Product</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>warehouseID, productID, stockQuantity</p>
+                    </div>
+                </div>
+                <!-- Card 15: Product --><div class="crc-card reveal">
+                    <h3>15. Product</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>manageStock</li>
+                                <li>updateStock</li>
+                                <li>addNewProduct</li>
+                                <li>getProductData</li>
+                                <li>updateProductData</li>
+                                <li>deleteProduct</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>ProductCategory</li>
+                                <li>SalesOrder</li>
+                                <li>Stock</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>productID, productName, productDescription, productStock, productPrice, productImage</p>
+                    </div>
+                </div>
+                <!-- Card 16: ProductCategory --><div class="crc-card reveal">
+                    <h3>16. ProductCategory</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>addNewProductCategory</li>
+                                <li>getProductCategoryData</li>
+                                <li>updateProductCategory</li>
+                                <li>deleteProductCategory</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>Product</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>productCategoryID, categoryName, categoryDescription</p>
+                    </div>
+                </div>
+                <!-- Card 17: CreditLimitRequest --><div class="crc-card reveal">
+                    <h3>17. CreditLimitRequest</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>createCreditLimitRequest</li>
+                                <li>updateCreditLimitRequestStatus</li>
+                                <li>getCreditLimitRequestHistory</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>Customer</li>
+                                <li>Supervisor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>creditLimitRequestCode, customerID, customerMonthlySalary, creditIncreaseAmount, requestStatus</p>
+                    </div>
+                </div>
+                <!-- Card 18: Warehouse --><div class="crc-card reveal">
+                    <h3>18. Warehouse</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>manageStock</li>
+                                <li>updateStock</li>
+                                <li>getStockAvailability</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>WarehouseStaff</li>
+                                <li>Stock</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>warehouseID, warehouseAddress</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: UI Demo --><section id="ui-demo" class="slide">
+        <div class="text-center w-full max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 reveal">User Interface</h2>
+            <div class="bg-gray-100 p-8 rounded-lg shadow-2xl reveal w-full mx-auto">
+                 <img src="UI1.png" 
+                     alt="Placeholder UI Screenshot" 
+                     class="w-full h-auto rounded-md"
+                     onerror="this.onerror=null;this.src='https://placehold.co/1280x832/e2e8f0/334155?text=Image+Not+Found';">
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Conclusion --><section id="conclusion" class="slide text-center">
+        <h2 class="text-5xl font-extrabold mb-4 reveal">Terima <span class="accent-color">Kasih</span></h2>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        const sr = ScrollReveal({
+            distance: '50px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            reset: false,
+            delay: 200
+        });
+
+        sr.reveal('.reveal', {
+            origin: 'bottom',
+            interval: 100
+        });
+
+        sr.reveal('.animate-title', { origin: 'top', duration: 1200 });
+        sr.reveal('.animate-subtitle', { origin: 'bottom', duration: 1200, delay: 400 });
+
+        const sections = document.querySelectorAll('section');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-section') === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffca28" 
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#ffca28"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffca28", 
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab" 
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push" 
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
+
