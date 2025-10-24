@@ -175,12 +175,12 @@
 
     <!-- Navigation dots --><div class="nav-dots">
         <a href="#intro" class="nav-dot active" data-section="intro"></a>
-        <a href="#use-case-diagram" class="nav-dot" data-section="use-case-diagram"></a> <!-- Dot baru ditambahkan -->
+        <a href="#use-case-diagram" class="nav-dot" data-section="use-case-diagram"></a>
         <a href="#final-table" class="nav-dot" data-section="final-table"></a>
         <a href="#updated-diagram" class="nav-dot" data-section="updated-diagram"></a>
         <a href="#first-cut-diagram" class="nav-dot" data-section="first-cut-diagram"></a>
         <a href="#ui-demo" class="nav-dot" data-section="ui-demo"></a>
-        <a href="#crc-logistics" class="nav-dot" data-section="crc-logistics"></a>
+        <a href="#crc-cards" class="nav-dot" data-section="crc-cards"></a> <!-- Dipindahkan dan diganti nama -->
         <a href="#conclusion" class="nav-dot" data-section="conclusion"></a>
     </div>
 
@@ -191,8 +191,7 @@
         <svg class="w-12 h-12 mt-16 text-gray-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
     </section>
 
-    <!-- Slide 2: Use Case Diagram (BARU) -->
-    <section id="use-case-diagram" class="slide">
+    <!-- Slide 2: Use Case Diagram --><section id="use-case-diagram" class="slide">
         <div class="text-center w-full max-w-5xl">
             <h2 class="text-4xl font-bold mb-8 reveal">Use Case Diagram</h2>
             <div class="bg-gray-100 p-8 rounded-lg shadow-2xl reveal w-full mx-auto">
@@ -204,8 +203,7 @@
         </div>
     </section>
 
-    <!-- Slide 3: Final Table of Classes (Sebelumnya Slide 2) -->
-    <section id="final-table" class="slide">
+    <!-- Slide 3: Final Table of Classes --><section id="final-table" class="slide">
         <div class="text-center w-full max-w-6xl">
             <h2 class="text-4xl font-bold mb-8 reveal">Final Table of Classes</h2>
             <div class="overflow-auto reveal max-h-[80vh] rounded-lg" style="margin: 25px 0;">
@@ -242,7 +240,7 @@
         </div>
     </section>
 
-    <!-- Slide 3: Updated Class Diagram --><section id="updated-diagram" class="slide">
+    <!-- Slide 4: Updated Class Diagram --><section id="updated-diagram" class="slide">
         <div class="text-center w-full max-w-5xl">
             <h2 class="text-4xl font-bold mb-8 reveal">Updated Class Diagram</h2>
             <div class="bg-gray-100 p-8 rounded-lg shadow-2xl reveal w-full mx-auto">
@@ -254,7 +252,7 @@
         </div>
     </section>
 
-    <!-- Slide 4: First-Cut Design Model Class Diagram --><section id="first-cut-diagram" class="slide">
+    <!-- Slide 5: First-Cut Design Model Class Diagram --><section id="first-cut-diagram" class="slide">
         <div class="text-center w-full max-w-5xl">
             <h2 class="text-4xl font-bold mb-8 reveal">First-Cut Design Model Class Diagram</h2>
             <div class="bg-gray-100 p-8 rounded-lg shadow-2xl reveal w-full mx-auto">
@@ -266,10 +264,9 @@
         </div>
     </section>
     
-    
-    <!-- Slide 8: UI Demo --><section id="ui-demo" class="slide">
+    <!-- Slide 6: UI Demo (Dipindahkan) --><section id="ui-demo" class="slide">
         <div class="text-center w-full max-w-6xl">
-            <h2 class="text-4xl font-bold mb-8 reveal">User Interface Design</h2>
+            <h2 class="text-4xl font-bold mb-8 reveal">Contoh Desain Antarmuka (UI)</h2>
             <div class="bg-gray-100 p-8 rounded-lg shadow-2xl reveal w-full mx-auto">
                  <img src="UI1.png" 
                      alt="Placeholder UI Screenshot" 
@@ -279,12 +276,12 @@
         </div>
     </section>
 
-    <!-- Slide 5: CRC Card - Logistics --><section id="crc-logistics" class="slide">
+    <!-- Slide 7: CRC Cards (Dipindahkan dan Diperbarui) --><section id="crc-cards" class="slide">
         <div class="text-center w-full max-w-7xl">
-            <h2 class="text-4xl font-bold mb-8 reveal">CRC Card: <span class="accent-color">Logistics</span></h2>
-            <div class="flex justify-center w-full">
+            <h2 class="text-4xl font-bold mb-8 reveal">CRC Cards: <span class="accent-color">Logistics & DeliveryOrder</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
                 <!-- Card 4: Logistics -->
-                <div class="crc-card reveal w-full max-w-md">
+                <div class="crc-card reveal">
                     <h3>4. Logistics</h3>
                     <div class="grid grid-cols-2 gap-0 mb-4">
                         <div class="pr-4 border-r border-white/20">
@@ -305,6 +302,39 @@
                     <div>
                         <h4>Attributes</h4>
                         <p>logisticsID, logisticsName, logisticsEmailAddress, logisticsPassword</p>
+                    </div>
+                </div>
+                
+                <!-- Card 11: DeliveryOrder (BARU) -->
+                <div class="crc-card reveal">
+                    <h3>11. DeliveryOrder</h3>
+                    <div class="grid grid-cols-2 gap-0 mb-4">
+                        <div class="pr-4 border-r border-white/20">
+                            <h4>Responsibilities</h4>
+                            <ul>
+                                <li>assignVehicle</li>
+                                <li>assignDriver</li>
+                                <li>updateDeliveryStatus</li>
+                                <li>scheduleDelivery</li>
+                                <li>trackDelivery</li>
+                                <li>getDeliveryOrderData</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4">
+                            <h4>Collaborators</h4>
+                            <ul>
+                                <li>SalesOrder</li>
+                                <li>Logistics</li>
+                                <li>Vehicle</li>
+                                <li>Driver</li>
+                                <li>DeliveryConfirmation</li>
+                                <li>DeliveryValidation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Attributes</h4>
+                        <p>orderID, deliveryDate, deliveryStatus</p>
                     </div>
                 </div>
             </div>
@@ -467,6 +497,3 @@
     </script>
 </body>
 </html>
-
-
-
